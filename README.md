@@ -1,8 +1,18 @@
+## Setup
+
+### Install StepZen CLI
+
+```bash
+npm install -g stepzen
+```
+
+### Start development server
+
 ```bash
 stepzen start
 ```
 
-Test query
+### Run test query
 
 ```graphql
 query TEST_QUERY {
@@ -37,5 +47,45 @@ Output:
       "String": "Mauris massa"
     }
   }
+}
+```
+
+## Project Structure
+
+### index.graphql
+
+```graphql
+schema @sdl(
+  files: [
+    "test.graphql"
+  ]
+) {
+  query: Query
+}
+```
+
+### test.graphql
+
+```graphql
+interface Test {
+  String: String!
+  Int: Int!
+  Float: Float!
+  JSON: JSON!
+  JSON2: JSON!
+  Date: Date!
+  DateTime: DateTime!
+}
+
+type Query {
+  getTest: Test
+}
+```
+
+### stepzen.config.json
+
+```json
+{
+  "endpoint": "api/stepzen-boilerplate"
 }
 ```
